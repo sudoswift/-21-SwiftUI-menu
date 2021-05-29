@@ -23,16 +23,18 @@ struct ContentView: View {
                             Button{
                                 print("flame clicked")
                                 self.ShowingAlert.toggle()
-                                myText = "플레임 클릭됨"
-                            }label: {
+                                myText = "플레임"
+                            } label: {
                                 Label("빡코딩", systemImage: "flame.fill")
                             }
-                            Button{
-                                print("house clicked")
-                                ShowingAlert = true
-                                myText = "하우스 클릭됨"
-                            }label: {
-                                Label("자바", systemImage: "house.fill")
+                            Section{
+                                Button{
+                                    print("house clicked")
+                                    ShowingAlert.toggle()
+                                    myText = "하우스"
+                                }label: {
+                                    Label("자바", systemImage: "house.fill")
+                                }
                             }
                         } label: {
                             // Custom Color 적용하는 방법
@@ -47,7 +49,7 @@ struct ContentView: View {
                             }
                         }// ToolBar
                 .alert(isPresented: $ShowingAlert){
-                    Alert(title: Text("Alert 테스트"), message: Text("alert 를 이용한 메시지"), dismissButton: .cancel(Text("확인")))
+                    Alert(title: Text("\(myText) 클릭됨"), message: Text("alert 를 이용한 메시지"), dismissButton: .cancel(Text("확인")))
                 }
         } // NavigationView
     }
