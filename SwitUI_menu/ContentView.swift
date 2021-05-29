@@ -17,7 +17,16 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            Text("Hello, world!")
+            VStack{
+                Spacer()
+                Text("\(myPets[selected]) 가 선택되어 있습니다.")
+                    .font(.system(size: 30))
+                    .bold()
+                    .padding(.bottom)
+                Text("우측 상단의 아이콘을 눌러주세요.")
+                Spacer()
+                Spacer()
+            }
                 .padding()
                 .navigationTitle("하위하위")
                 .toolbar {
