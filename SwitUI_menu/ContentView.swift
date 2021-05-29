@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+let myPets = ["댕댕이","껄룩이","찍찍이"]
+
 struct ContentView: View {
     
     @State private var ShowingAlert: Bool = false
     @State private var myText: String = ""
+    @State private var selected: Int = 0
     
     var body: some View {
         NavigationView{
@@ -25,7 +28,7 @@ struct ContentView: View {
                                 self.ShowingAlert.toggle()
                                 myText = "플레임"
                             } label: {
-                                Label("빡코딩", systemImage: "flame.fill")
+                                Label("불꽃", systemImage: "flame.fill")
                             }
                             Section{
                                 Button{
@@ -33,7 +36,37 @@ struct ContentView: View {
                                     ShowingAlert.toggle()
                                     myText = "하우스"
                                 }label: {
-                                    Label("자바", systemImage: "house.fill")
+                                    Label("집", systemImage: "house.fill")
+                                }
+                            }
+                            Section{
+                                Button{
+                                    print("house clicked")
+                                    ShowingAlert.toggle()
+                                    myText = "파일"
+                                }label: {
+                                    Label("새 파일 만들기", systemImage: "doc")
+                                }
+                                Button{
+                                    print("house clicked")
+                                    ShowingAlert.toggle()
+                                    myText = "폴더"
+                                }label: {
+                                    Label("새 폴더 만들기", systemImage: "folder")
+                                }
+                            }
+                            Section{
+                                Button{
+                                    print("house clicked")
+                                    ShowingAlert.toggle()
+                                    myText = "삭제"
+                                }label: {
+                                    Label("파일 모두 삭제", systemImage: "trash")
+                                }
+                            }
+                            Picker(selection: $selected, label: Text("애완동물 선택")) {
+                                ForEach(myPets.indices){ index in
+                                    Text("\(myPets[index])").tag(index)
                                 }
                             }
                         } label: {
